@@ -9,23 +9,23 @@ const GifListContainer = () => {
 
 
   useEffect(() => {
-      fetch(`https://api.giphy.com/v1/gifs/search?q=dolphin&api_key=y432v0TbMkgMEzD0vIu26822crlh1XXE`)
+      fetch(`https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=y432v0TbMkgMEzD0vIu26822crlh1XXE`)
       .then(res => res.json())
       .then(data => {
         console.log(data.data.slice(0,3))
         setGifs(data.data.slice(0,3))
       })
-  },[] );
+  },[searchTerm] );
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSearchTerm(event.target.elements.search.value);
+
+  const handleSubmit = (value) => {
+    setSearchTerm(value);
   };
 
   return (
     <>
-      <GifSearch submitHandler={handleSubmit} />
+      <GifSearch handleSubmit={handleSubmit} />
       <GifList gifs={gifs} />
     </>
   );

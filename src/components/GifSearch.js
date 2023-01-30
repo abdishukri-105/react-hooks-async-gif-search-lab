@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 
-const GifSearch = ({ submitHandler }) => {
+const GifSearch = ({handleSubmit}) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
+    const input = e.target.value
+    console.log(input)
+    setSearchTerm(input);
+    
   };
-
-  const handleSubmit = (e) => {
+ 
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    submitHandler(searchTerm);
+    handleSubmit(searchTerm);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form  onSubmit={handleFormSubmit}>
       <input type="text" value={searchTerm} onChange={handleChange} />
       <button type="submit">Search</button>
     </form>
