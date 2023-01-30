@@ -17,8 +17,6 @@ const GifListContainer = () => {
       })
   },[searchTerm] );
 
-
-
   const handleSubmit = (value) => {
     setSearchTerm(value);
   };
